@@ -1,5 +1,5 @@
 from flask import render_template, Flask, url_for
-from utils import placeholder_text
+from utils import placeholder_text, get_all_files_in_dir
 
 app = Flask(__name__)
 
@@ -7,19 +7,24 @@ app = Flask(__name__)
 @app.route('/index.html')
 def home():
     return render_template('index.html', title="Home Page",
-                            description=placeholder_text())
+                            description=placeholder_text(3))
 
 @app.route('/blog')
 def blog():
-    return render_template('blog.html', title="Blog Posts")
+    return render_template('blog.html', title="Blog Posts",
+                            description=placeholder_text(3))
 
 @app.route('/data')
 def data():
-    return render_template('data.html', title="Data")
+    return render_template('data.html', title="Data",
+                            description=placeholder_text(4))
 
 @app.route('/gallery')
 def gallery():
-    return render_template('gallery.html', title="Gallery")
+    images = get_all_files_in_dir(os_dir_join_args=['static', 'gallery'],
+                                                    file_filter='.jpg')
+    return render_template('gallery.html', title="Gallery", images=images,
+                            description=placeholder_text(2))
 
 @app.route('/about')
 def about():

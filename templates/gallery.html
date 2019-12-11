@@ -1,4 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row">
+        {% for image in images %}
+        <div class="col-lg-3 col-md-4">
+            <div class="card mb-4 shadow-sm">
+                    <img src="{{ image }}" alt="{{ image }}" class="img-fluid">
+            </div>
+        </div>
+        {% endfor %}
+</div>
 {% endblock content %}

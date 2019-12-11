@@ -11,42 +11,41 @@
     <title>{{ title }}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar">JDCS</a>
-        <div class="navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('blog') }}">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('data') }}">Data</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar">JDCS</a>
+            <div class="navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('blog') }}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('data') }}">Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 disabled" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Search</button>
+                </form>
+            </div>
+        </nav> 
+        <section class="jumbotron text-center">
+            <h3>{{ title }}</h3>
+            <p class="lead">{{ description }}</p>
+        </section>
+        <div class="container-fluid">
+                {% block content %} {% endblock content %}
         </div>
-    </nav>
-    <section class="jumbotron text-center">
-        <h3>{{ title }}</h3>
-        <p class="lead">{{ description }}</p>
-        <div class="container">
-            {% block content %} {% endblock content %}
-        </div>
-    </section>
-    
-    
-
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
