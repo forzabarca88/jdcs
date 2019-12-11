@@ -28,7 +28,7 @@ def gallery():
     images = get_all_files_in_dir(os_dir_join_args=['static', 'gallery'],
                                   file_filter='.jpg')
     return render_template('gallery.html', title="Gallery", images=images,
-                           description=placeholder_text(2))
+                           description=placeholder_text(1))
 
 
 @app.route('/about')
