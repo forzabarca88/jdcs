@@ -33,7 +33,8 @@ def gallery():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', title="About")
+    return render_template('about.html', title="About",
+                            description=placeholder_text(5))
 
 
 if __name__ == '__main__':
