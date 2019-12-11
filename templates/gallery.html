@@ -3,11 +3,11 @@
 {% block content %}
 <div class="row">
     {% for image in images %}
-        <div class="col-lg-4 col-md-6">
-            <div class="card">
-                <img src="{{ image }}" alt="{{ image }}" class="img-fluid">
-            </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="card">
+            <img src="{{ image }}" alt="{{ image }}" class="img-fluid">
         </div>
+    </div>
     {% endfor %}
 </div>
 {% endblock content %}
