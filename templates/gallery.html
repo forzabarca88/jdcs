@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="galleryOuter" class="gallery">
+<div id="galleryOuter" class="container-fluid">
     <div id="galleryCarousel" class="carousel slide" data-ride="carousel">
         <div id="carouselInner" class="carousel-inner">
 
@@ -26,15 +26,14 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <div class="row overflow-auto" id="gallery">
+    <div class="row flex-nowrap overflow-auto" id="gallery">
         {% for image in images %}
-        <div class="col-lg-1 col-md-2 col-md-3">
-            <div class="card" data-toggle="modal" data-target="#galleryModal">
+            <div class="img-thumbnail" data-toggle="modal" data-target="#galleryModal">
                 <img src="{{ image }}" data-target="#galleryCarousel" data-slide-to="{{ loop.index - 1 }}"
                     alt="{{ image }}" class="img-fluid">
             </div>
-        </div>
         {% endfor %}
     </div>
 </div>
+
 {% endblock content %}
