@@ -28,7 +28,7 @@
     </div>
     <div class="row flex-nowrap overflow-auto" id="gallery">
         {% for image in images %}
-            <div class="img-thumbnail" data-toggle="modal" data-target="#galleryModal">
+            <div class="img-thumbnail">
                 <img src="{{ image }}" data-target="#galleryCarousel" data-slide-to="{{ loop.index - 1 }}"
                     alt="{{ image }}" class="img-fluid">
             </div>
