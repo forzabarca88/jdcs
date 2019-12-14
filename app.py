@@ -1,9 +1,10 @@
 from flask import render_template, Flask, url_for
 from utils import placeholder_text, get_all_files_in_dir
 import tests.mock_objects as test
+import config
 
 app = Flask(__name__)
-
+app.config.from_object(config)
 
 @app.route('/')
 @app.route('/index.html')
