@@ -1,7 +1,8 @@
-from flask import render_template, Flask, url_for
+from flask import render_template, Flask, url_for, flash, redirect, request
 from utils import placeholder_text, get_all_files_in_dir
 import tests.mock_objects as test
 import config
+from forms import ContactForm
 
 app = Flask(__name__)
 app.config.from_object(config)
@@ -33,11 +34,17 @@ def gallery():
                            description=test.DESC_TEXT_GALLERY.text)
 
 
-@app.route('/about')
+@app.route('/about', methods=['GET', 'POST'])
 def about():
+    form = ContactForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            flash(message='Success!', category='success')
+            return redirect(url_for('home'))
+        flash(message='Form Validation Error - please check\
+                that all fields are completed correctly.', category='error')
     return render_template('about.html', title="About",
-                            description=test.DESC_TEXT_ABOUT.text)
-
+                            description=test.DESC_TEXT_ABOUT.text, form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
