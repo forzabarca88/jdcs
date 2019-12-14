@@ -1,11 +1,15 @@
 from flask import render_template, Flask, url_for, flash, redirect, request
-from utils import placeholder_text, get_all_files_in_dir
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from utils import placeholder_text, get_all_files_in_dir, contact_admin
 import tests.mock_objects as test
 import config
 from forms import ContactForm
 
 app = Flask(__name__)
 app.config.from_object(config)
+db = SQLAlchemy(app)
+migration = Migrate(app, db)
 
 @app.route('/')
 @app.route('/index.html')
@@ -40,6 +44,7 @@ def about():
     if request.method == 'POST':
         if form.validate_on_submit():
             flash(message='Success!', category='success')
+            contact_admin(form.email, form.comment)
             return redirect(url_for('about'))
         validation_errors = form.name.errors + form.email.errors + form.comment.errors
         total_errors = len(validation_errors)
