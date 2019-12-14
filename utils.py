@@ -1,4 +1,5 @@
 import os
+import config
 
 PLACEHOLDER_TEXT = '''
 Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. 
@@ -17,3 +18,10 @@ def get_all_files_in_dir(os_dir_join_args, file_filter=None):
         files = [os.path.join(dir, file)
                  for file in files if file.find(file_filter) >= 0]
     return files
+
+def send_email(sender, receiver, subject, body):
+    pass
+
+def contact_admin(sender, body, subject='New message received'):
+    receiver = config.ADMIN_EMAIL_ADDRESS
+    return send_email(sender, receiver, subject, body)
