@@ -40,9 +40,11 @@ def about():
     if request.method == 'POST':
         if form.validate_on_submit():
             flash(message='Success!', category='success')
-            return redirect(url_for('home'))
-        flash(message='Form Validation Error - please check\
-                that all fields are completed correctly.', category='error')
+            return redirect(url_for('about'))
+        validation_errors = form.name.errors + form.email.errors + form.comment.errors
+        total_errors = len(validation_errors)
+        list(map(flash, validation_errors, 
+                ['error' for i in range(total_errors)]))
     return render_template('about.html', title="About",
                             description=test.DESC_TEXT_ABOUT.text, form=form)
 
