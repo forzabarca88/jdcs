@@ -1,0 +1,12 @@
+.carousel-item img {
+    object-fit: scale-down;
+    height: 90vh;
+}
+
+.img-thumbnail img {
+    height: 10vh;
+    width: 10vw;
+    min-width: 10vw;
+    min-height: 10vh;
+    object-fit: cover;
+}
