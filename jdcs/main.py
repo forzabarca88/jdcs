@@ -1,14 +1,16 @@
 from flask import render_template, Flask, url_for, flash, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from jdcs.utils import placeholder_text, get_all_files_in_dir, contact_admin
 import tests.mock_objects as test
 import jdcs.config as config
 from jdcs.forms import ContactForm
+from jdcs.utils import placeholder_text, get_all_files_in_dir, contact_admin
 
 app = Flask(__name__)
 app.config.from_object(config)
 db = SQLAlchemy(app)
+# this import depends on db, so can't be before that assignment
+from jdcs.model import Email
 migration = Migrate(app, db)
 
 @app.route('/')

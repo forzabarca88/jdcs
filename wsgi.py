@@ -1,1 +1,1 @@
-from jdcs.app import app
+from jdcs.main import app

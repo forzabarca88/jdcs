@@ -1,4 +1,4 @@
-from jdcs.app import db
+from jdcs.main import db
 from datetime import datetime
 
 class Email(db.Model):
@@ -6,7 +6,7 @@ class Email(db.Model):
     sender = db.Column(db.String(128), nullable=False)
     receiver = db.Column(db.String(128), nullable=False)
     subject = db.Column(db.String(128))
-    body = db.Column(db.String(2048))
+    body = db.Column(db.String(1024))
     latest_action_date = db.Column(db.DateTime, nullable=False, 
                             default=datetime.utcnow)
     sent = db.Column(db.Boolean, nullable=False)
