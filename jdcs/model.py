@@ -1,5 +1,5 @@
 from jdcs.app import db
-
+from datetime import datetime
 
 class Email(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -7,7 +7,8 @@ class Email(db.Model):
     receiver = db.Column(db.String(128), nullable=False)
     subject = db.Column(db.String(128))
     body = db.Column(db.String(2048))
-    latest_action_date = db.Column(db.DateTime, nullable=False)
+    latest_action_date = db.Column(db.DateTime, nullable=False, 
+                            default=datetime.utcnow)
     sent = db.Column(db.Boolean, nullable=False)
 
     def __repr__(self):
