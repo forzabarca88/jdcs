@@ -9,8 +9,10 @@ from jdcs.utils import placeholder_text, get_all_files_in_dir, contact_admin
 app = Flask(__name__)
 app.config.from_object(config)
 db = SQLAlchemy(app)
+
 # this import depends on db, so can't be before that assignment
-from jdcs.model import Email
+from jdcs.model import Email, Image
+
 migration = Migrate(app, db)
 
 @app.route('/')

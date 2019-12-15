@@ -20,8 +20,10 @@ def get_all_files_in_dir(os_dir_join_args, base_dir=config.BASE_DIR, file_filter
                  for file in files if file.find(file_filter) >= 0]
     return files
 
+
 def send_email(sender, receiver, subject, body):
     pass
+
 
 def contact_admin(sender, body, subject='New message received'):
     receiver = config.ADMIN_EMAIL_ADDRESS
