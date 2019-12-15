@@ -1,5 +1,7 @@
 .vscode/
-static/gallery/*
+*.jpg
+*.png
+*.xmp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

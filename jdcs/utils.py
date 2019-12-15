@@ -1,5 +1,5 @@
 import os
-import config
+import jdcs.config as config
 
 PLACEHOLDER_TEXT = '''
 Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. 
@@ -11,7 +11,8 @@ def placeholder_text(multiplier=1):
     return ''.join(PLACEHOLDER_TEXT for i in range(multiplier))
 
 
-def get_all_files_in_dir(os_dir_join_args, file_filter=None):
+def get_all_files_in_dir(os_dir_join_args, base_dir=config.BASE_DIR, file_filter=None):
+    os.chdir(base_dir)
     dir = os.path.join(*os_dir_join_args)
     files = os.listdir(path=dir)
     if file_filter:
