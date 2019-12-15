@@ -1,4 +1,4 @@
-from app import db
+from jdcs.app import db
 
 
 class Email(db.Model):
