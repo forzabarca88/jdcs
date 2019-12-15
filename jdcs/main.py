@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 import tests.mock_objects as test
 import jdcs.config as config
 from jdcs.forms import ContactForm
-from jdcs.utils import placeholder_text, get_all_files_in_dir, contact_admin
+from jdcs.utils import placeholder_text, get_all_files_in_dir, contact_admin, add_email_to_db
 
 app = Flask(__name__)
 app.config.from_object(config)
@@ -47,9 +47,12 @@ def about():
     form = ContactForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            flash(message='Success!', category='success')
-            contact_admin(form.email, form.comment)
-            return redirect(url_for('about'))
+            if add_email_to_db(Email(), form.name, form.email, config.ADMIN_EMAIL_ADDRESS, 
+                                'Email from User', form.comment):
+                flash(message='Success!', category='success')
+                contact_admin(form.email, form.comment)
+                return redirect(url_for('about'))
+            flash(message='Error saving contact details.', category='error')
         validation_errors = form.name.errors + form.email.errors + form.comment.errors
         total_errors = len(validation_errors)
         list(map(flash, validation_errors, 

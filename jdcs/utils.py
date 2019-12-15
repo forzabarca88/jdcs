@@ -28,3 +28,17 @@ def send_email(sender, receiver, subject, body):
 def contact_admin(sender, body, subject='New message received'):
     receiver = config.ADMIN_EMAIL_ADDRESS
     return send_email(sender, receiver, subject, body)
+
+def add_email_to_db(db_model, sender_name, sender, receiver, subject, body):
+    db_model.sender_name = sender_name.data
+    db_model.sender = sender.data
+    db_model.receiver = receiver
+    db_model.subject = subject
+    db_model.body = body.data
+    db_model.sent = False
+    try:
+        db_model.commit()
+        return True
+    except Exception as e:
+        print(e)
+        return False

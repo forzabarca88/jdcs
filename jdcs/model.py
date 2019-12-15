@@ -4,6 +4,7 @@ from datetime import datetime
 
 class Email(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    sender_name = db.Column(db.String(64))
     sender = db.Column(db.String(128), nullable=False)
     receiver = db.Column(db.String(128), nullable=False)
     subject = db.Column(db.String(128))
@@ -13,13 +14,18 @@ class Email(db.Model):
     sent = db.Column(db.Boolean, nullable=False)
 
     def __repr__(self):
-        return 'ID: {} \nFrom: {} \nTo: {} \nSubject: {} \nSent?: {}'.format(
+        return 'ID: {} \nSender Name: {} \nFrom: {} \nTo: {} \nSubject: {} \nSent?: {}'.format(
             self.id,
+            self.sender_name,
             self.sender,
             self.receiver,
             self.subject,
             self.sent
         )
+
+    def commit(self):
+        db.session.add(self)
+        db.session.commit()
 
 class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
