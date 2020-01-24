@@ -4,7 +4,12 @@ from flask_migrate import Migrate
 import tests.mock_objects as test
 import jdcs.config as config
 from jdcs.forms import ContactForm
-from jdcs.utils import placeholder_text, get_all_files_in_dir, contact_admin, add_email_to_db
+from jdcs.utils import (
+    placeholder_text,
+    get_all_files_in_dir,
+    contact_admin,
+    add_email_to_db
+)
 
 app = Flask(__name__)
 app.config.from_object(config)

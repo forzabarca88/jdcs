@@ -14,3 +14,22 @@
 #blockContent {
     margin-top: 70px;
 }
+
+.my-index-card-img {
+    height: 33vh; 
+    object-fit: cover;
+}
+
+.my-index-card:hover {
+    background-color: honeydew;
+    color: brown;
+}
+
+.my-img-thumbnail {
+    background-color:black;
+    opacity: 1;
+}
+
+.my-img-thumbnail:hover {
+    opacity: 0.8;
+}
