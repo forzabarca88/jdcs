@@ -11,6 +11,7 @@ RUN pip install -r "requirements.pip"
 COPY ["./jdcs", "./jdcs"]
 COPY ["./tests", "./tests"]
 COPY ["./wsgi.py", "./"]
+RUN chown -R docker-user:docker-user ./
 #change to non-root user
 USER docker-user
 #listen port for gunicorn
