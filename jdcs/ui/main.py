@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import tests.mock_objects as test
 import jdcs.config as config
-from jdcs.forms import ContactForm
+from jdcs.ui.forms import ContactForm
 from jdcs.utils import (
     placeholder_text,
     get_all_files_in_dir,
