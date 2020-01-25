@@ -1,4 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="col-sm-12 col-md-8 col-lg-8">
+    {% for post in posts %}
+        <h5>
+            {{ post.title }}
+        </h5>
+        <div class="row">
+        <p class="ml-3">{{ post.date }}</p>
+        <div class="row ml-3">
+            {% for tag in post.tag %}
+            <p class="ml-1">{{ tag }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <p class="p-3">
+        {{ post.content }}
+    </p>
+    {% endfor %}
+</div>
 {% endblock content %}

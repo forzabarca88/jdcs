@@ -8,6 +8,11 @@ class BlogPost(object):
                 This is a test, hello world!
             """
 
+    def __init__(self, title, content=None):
+        self.title = title
+        if content:
+            self.content = content
+
 
 class DescText(object):
     text = None
@@ -40,3 +45,9 @@ DESC_TEXT_ABOUT = DescText(
     This site was was built (by me!) primarily for learning and playing with various technologies.
     """
     )
+
+BLOG_POSTS = [
+    BlogPost('Post 1', content='Here is the first post'),
+    BlogPost('Post 2', content='Here is another post!'),
+    BlogPost('Post 3', content='Third time lucky post!!!')
+    ]

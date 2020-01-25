@@ -27,7 +27,8 @@ def home():
 @ui.route('/blog')
 def blog():
     return render_template('blog.html', title="Blog Posts",
-                           description=test.DESC_TEXT_BLOG.text)
+                           description=test.DESC_TEXT_BLOG.text,
+                           posts = test.BLOG_POSTS)
 
 
 @ui.route('/data')
